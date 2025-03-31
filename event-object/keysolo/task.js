@@ -17,14 +17,19 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода символа вызываем this.success()
-      При неправильном вводе символа - this.fail();
-      DOM-элемент текущего символа находится в свойстве this.currentSymbol.
-     */
+    let onkey = (e) => {
+      const current = this.currentSymbol
+      if (e.key === 'Shift'){
+      return
+      }
+      if (current.textContent == e.key) {
+      this.success()
+      }
+      else {
+      this.fail()
+      }
+      }
+      document.addEventListener('keydown', onkey)
   }
 
   success() {
@@ -60,17 +65,18 @@ class Game {
 
   getWord() {
     const words = [
-        'bob',
-        'awesome',
-        'netology',
-        'hello',
-        'kitty',
-        'rock',
-        'youtube',
-        'popcorn',
-        'cinema',
-        'love',
-        'javascript'
+        'home',
+        'doctor',
+        'who',
+        'rose',
+        'tardis',
+        'donna',
+        'amy',
+        'rory',
+        'melody',
+        'hate',
+        'python',
+        'dalek'
       ],
       index = Math.floor(Math.random() * words.length);
 
@@ -91,4 +97,3 @@ class Game {
 }
 
 new Game(document.getElementById('game'))
-
